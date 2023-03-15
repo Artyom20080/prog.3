@@ -1,7 +1,6 @@
-class Amenaker{
+class Amenaker extends LivingCreature{
     constructor(x, y){
-        this.x = x
-        this.y = y
+        super(x,y)
         this.energy = 15
         this.directions =  [];
     }
@@ -17,6 +16,8 @@ class Amenaker{
             [this.x + 1, this.y + 1]
         ];
     }
+
+
     chooseCell(char, char1, char2) {
         this.getNewCoordinates()
         var found = [];

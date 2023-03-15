@@ -122,7 +122,7 @@ function draw() {
                 }else if(matrix[y][x] == 4){
                     fill("purple")
                     rect(x * side, y * side, side, side);
-                    text(' 🐕‍🦺 ', x * side, y * side + toBot)  
+                    text(' 🐕 ', x * side, y * side + toBot)  
                 }else if (matrix[y][x]==6){
                     fill("#403a3a")
                     rect(x * side, y * side, side, side);

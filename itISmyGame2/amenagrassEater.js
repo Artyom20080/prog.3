@@ -1,7 +1,6 @@
-class AmenagrassEater {
+class AmenagrassEater extends LivingCreature {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        super(x,y)
         this.energy = 20;
         this.directions = []
            
@@ -51,7 +50,7 @@ class AmenagrassEater {
             let y = exact[1];
 
             let eater = new AmenagrassEater(x, y);
-            matrix[y][x] = 3;
+            matrix[y][x] = 4;
             amenagrassEaterArr.push(eater);
 
             this.energy = 20;

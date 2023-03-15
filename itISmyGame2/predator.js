@@ -1,7 +1,6 @@
-class Predator{
+class Predator extends LivingCreature{
     constructor(x,y){
-              this.x = x
-              this.y = y
+              super(x,y)
               this.energy = 16
               this.directions = []
     }
@@ -19,6 +18,7 @@ class Predator{
           [this.x + 1, this.y + 1]
       ];
   }
+
   chooseCell(char,char1) {
       this.getNewCoordinates();
       let found = [];
