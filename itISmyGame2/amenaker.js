@@ -1,10 +1,11 @@
-class Amenaker extends LivingCreature{
-    constructor(x, y){
-        super(x,y)
+let LivingCreature = requrie("./LivingCreature ")
+module.exports =class Amenaker extends LivingCreature {
+    constructor(x, y) {
+        super(x, y)
         this.energy = 15
-        this.directions =  [];
+        this.directions = [];
     }
-    getNewCoordinates(){
+    getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -46,8 +47,8 @@ class Amenaker extends LivingCreature{
         return found;
     }
     move() {
-        var emptyCells = this.chooseCell(0)
-        var newCell = random(emptyCells);
+        var emptyCell = this.chooseCell(0)
+        var newCell = emptyCell[Math.floor(Math.random()* emptyCell.length)]
 
         if (newCell) {
             this.energy--
@@ -71,7 +72,7 @@ class Amenaker extends LivingCreature{
     }
     eat() {
         let emptyCell = this.chooseCell(1, 2, 3);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random()* emptyCell.length)]
 
         if (newCell) {
             this.energy += 3;
@@ -93,9 +94,9 @@ class Amenaker extends LivingCreature{
                     predatorArr.splice(i, 1)
                 }
             }
-            for(let i = 0; i < amenagrassEaterArr.length; i++){
-                if(amenagrassEaterArr[i]. x==x && amenagrassEaterArr[i].y==y){
-                    amenagrassEaterArr.splice(i,1)
+            for (let i = 0; i < amenagrassEaterArr.length; i++) {
+                if (amenagrassEaterArr[i].x == x && amenagrassEaterArr[i].y == y) {
+                    amenagrassEaterArr.splice(i, 1)
                 }
             }
             matrix[y][x] = 6
@@ -112,30 +113,30 @@ class Amenaker extends LivingCreature{
         }
     }
 
-    mul(){
-            var emptyCells = this.chooseCell(0);
-            var newCell = random(emptyCells);
-    
-            if (newCell && this.energy > 8) {
-                var newX = newCell[0];
-                var newY = newCell[1];
-                matrix[newY][newX] = 6;
-    
-                var amKer = new Amenaker(newX, newY);
+    mul() {
+        var emptyCells = this.chooseCell(0);
+        var newCell = emptyCell[Math.floor(Math.random()* emptyCell.length)]
 
-                amenakerArr.push(amKer);
-                this.energy = 20
+        if (newCell && this.energy > 8) {
+            var newX = newCell[0];
+            var newY = newCell[1];
+            matrix[newY][newX] = 6;
+
+            var amKer = new Amenaker(newX, newY);
+
+            amenakerArr.push(amKer);
+            this.energy = 20
+        }
+    }
+
+    die() {
+        matrix[this.y][this.x] = 0;
+        for (var i in amenakerArr) {
+            if (this.x == amenakerArr[i].x && this.y == amenakerArr[i].y) {
+                amenakerArr.splice(i, 1);
+                break;
             }
         }
-    
-        die() {
-            matrix[this.y][this.x] = 0;
-            for (var i in amenakerArr) {
-                if (this.x == amenakerArr[i].x && this.y == amenakerArr[i].y) {
-                    amenakerArr.splice(i, 1);
-                    break;
-                }
-            }
-        }
-            
+    }
+
 }

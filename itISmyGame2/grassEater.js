@@ -1,6 +1,7 @@
-class GrassEater extends LivingCreature{
-    constructor(x,y) {
-        super(x,y)
+let LivingCreature = requrie("./LivingCreature ")
+module.exports =class GrassEater extends LivingCreature {
+    constructor(x, y) {
+        super(x, y)
         this.energy = 15;
         this.directions = [];
     }
@@ -22,14 +23,14 @@ class GrassEater extends LivingCreature{
 
     chooseCell(char) {
         this.getNewCoordinates();
-       
+
         return super.chooseCell(char);
     }
-    
+
     mul() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
-   console.log(newCell);
+        let newCell = emptyCell[Math.floor(Math.random()* emptyCell.length)]
+        console.log(newCell);
         if (newCell && this.energy > 5) {
             let newX = newCell[0];
             let newY = newCell[1];
@@ -46,7 +47,7 @@ class GrassEater extends LivingCreature{
 
     eat() {
         let emptyCell = this.chooseCell(1);
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random()* emptyCell.length)]
 
         if (newCell) {
             this.energy += 5;
@@ -58,7 +59,7 @@ class GrassEater extends LivingCreature{
                     grassArr.splice(i, 1)
                     break;
                 }
-                
+
 
             }
 
@@ -71,20 +72,19 @@ class GrassEater extends LivingCreature{
             if (this.energy > 30) {
                 this.mul()
             }
-        } 
-        
-        
-        
+        }
+
+
+
         else {
             this.move()
         }
     }
 
-    
+
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
-
+        let newCell = emptyCell[Math.floor(Math.random()* emptyCell.length)]
         if (newCell) {
             let newX = newCell[0];
             let newY = newCell[1];
@@ -92,7 +92,7 @@ class GrassEater extends LivingCreature{
             matrix[newY][newX] = 2;
             matrix[this.y][this.x] = 0;
 
-           
+
             this.x = newX;
             this.y = newY;
 
@@ -101,7 +101,7 @@ class GrassEater extends LivingCreature{
             if (this.energy < 0) {
                 this.die()
             }
-        } 
+        }
     }
 
 

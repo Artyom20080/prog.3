@@ -1,10 +1,11 @@
-class AmenagrassEater extends LivingCreature {
+let LivingCreature = requrie("./LivingCreature ")
+module.exports = class AmenagrassEater extends LivingCreature {
     constructor(x, y) {
-        super(x,y)
+        super(x, y)
         this.energy = 20;
         this.directions = []
-           
-        
+
+
     }
     getNewCordinates() {
         this.directions = [
@@ -43,7 +44,7 @@ class AmenagrassEater extends LivingCreature {
     }
     mul() {
         let found = this.chooseCell(0);
-        let exact = random(found)
+        let exact = found[Math.floor(Math.random()* found.length)]
 
         if (exact && this.energy > 8) {
             let x = exact[0];
@@ -54,11 +55,11 @@ class AmenagrassEater extends LivingCreature {
             amenagrassEaterArr.push(eater);
 
             this.energy = 20;
-        } 
+        }
     }
     eat() {
         let found = this.chooseCell(1, 2);
-        let exact = random(found)
+        let exact = found[Math.floor(Math.random()* found.length)]
 
         if (exact) {
             this.energy += 5;
