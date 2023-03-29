@@ -1,107 +1,109 @@
 
 
-function matrixGenerator(matrixSize, grass, grassEater, predator, amenagrassEater, amenaker) {
-    var matrix = []
+// function matrixGenerator(matrixSize, grass, grassEater, predator, amenagrassEater, amenaker) {
+//     var matrix = []
 
-    for (let i = 0; i < matrixSize; i++) {
-        matrix.push([])
-        for (let j = 0; j < matrixSize; j++) {
-            matrix[i].push(0)
+const socket = io()
 
-        }
-    }
+//     for (let i = 0; i < matrixSize; i++) {
+//         matrix.push([])
+//         for (let j = 0; j < matrixSize; j++) {
+//             matrix[i].push(0)
 
-
-    for (let i = 0; i < grass; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        matrix[y][x] = 1
-
-    }
-
-    for (let i = 0; i < grassEater; i++) {
-
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        matrix[y][x] = 2
-
-    }
+//         }
+//     }
 
 
+//     for (let i = 0; i < grass; i++) {
 
-    for (let i = 0; i < predator; i++) {
+//         var x = Math.floor(Math.random() * matrixSize)
+//         var y = Math.floor(Math.random() * matrixSize)
 
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
+//         matrix[y][x] = 1
 
-        matrix[y][x] = 3
+//     }
 
+//     for (let i = 0; i < grassEater; i++) {
 
-    }
+//         var x = Math.floor(Math.random() * matrixSize)
+//         var y = Math.floor(Math.random() * matrixSize)
 
-    for (let i = 0; i < amenagrassEater; i++) {
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
+//         matrix[y][x] = 2
 
-        matrix[y][x] = 4
-    }
-    for (let i = 0; i < amenaker; i++) {
-        var x = Math.floor(Math.random() * matrixSize)
-        var y = Math.floor(Math.random() * matrixSize)
-
-        matrix[y][x] = 5
-    }
+//     }
 
 
 
+//     for (let i = 0; i < predator; i++) {
 
-    return matrix
-}
+//         var x = Math.floor(Math.random() * matrixSize)
+//         var y = Math.floor(Math.random() * matrixSize)
 
-var matrix = matrixGenerator(30, 30, 30, 1, 0, 1)
+//         matrix[y][x] = 3
+
+
+//     }
+
+//     for (let i = 0; i < amenagrassEater; i++) {
+//         var x = Math.floor(Math.random() * matrixSize)
+//         var y = Math.floor(Math.random() * matrixSize)
+
+//         matrix[y][x] = 4
+//     }
+//     for (let i = 0; i < amenaker; i++) {
+//         var x = Math.floor(Math.random() * matrixSize)
+//         var y = Math.floor(Math.random() * matrixSize)
+
+//         matrix[y][x] = 5
+//     }
+
+
+
+
+//     return matrix
+// }
+
+// var matrix = matrixGenerator(30, 30, 30, 1, 0, 1)
 var side = prompt("Ասեք վանտակի չափը")
 
 
-var grassArr = []
-var grassEaterArr = []
-var predatorArr = []
-var amenagrassEaterArr = []
-var amenakerArr = []
+// var grassArr = []
+// var grassEaterArr = []
+// var predatorArr = []
+// var amenagrassEaterArr = []
+// var amenakerArr = []
 
 function setup() {
     frameRate(15)
-    createCanvas(matrix[0].length * side, matrix.length * side)
+    createCanvas(30 * side, 30 * side)
 
-    for (let y = 0; y < matrix.length; y++) {
-        for (let x = 0; x < matrix[y].length; x++) {
+    //     for (let y = 0; y < matrix.length; y++) {
+    //         for (let x = 0; x < matrix[y].length; x++) {
 
-            if (matrix[y][x] == 1) {
-                var gr = new Grass(x, y)
-                grassArr.push(gr)
-            } else if (matrix[y][x] == 2) {
-                var grEat = new GrassEater(x, y)
-                grassEaterArr.push(grEat)
-            } else if (matrix[y][x] == 3) {
-                var pred = new Predator(x, y)
-                predatorArr.push(pred)
-            } else if (matrix[y], [x] == 4) {
-                var amenEa = new AmenagrassEater(x, y)
-                amenagrassEaterArr.push(amenEa)
-            } else if (matrix[y], [x] == 5) {
-                var amena = new Amenaker(x, y)
-                amenakerArr.push(amena)
-            }
-        }
-    }
+    //             if (matrix[y][x] == 1) {
+    //                 var gr = new Grass(x, y)
+    //                 grassArr.push(gr)
+    //             } else if (matrix[y][x] == 2) {
+    //                 var grEat = new GrassEater(x, y)
+    //                 grassEaterArr.push(grEat)
+    //             } else if (matrix[y][x] == 3) {
+    //                 var pred = new Predator(x, y)
+    //                 predatorArr.push(pred)
+    //             } else if (matrix[y], [x] == 4) {
+    //                 var amenEa = new AmenagrassEater(x, y)
+    //                 amenagrassEaterArr.push(amenEa)
+    //             } else if (matrix[y], [x] == 5) {
+    //                 var amena = new Amenaker(x, y)
+    //                 amenakerArr.push(amena)
+    //             }
+    //         }
+    //     }
 
+    // }
 }
 
 
-
-function draw() {
+function nkarel(matrix) {
 
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -127,6 +129,10 @@ function draw() {
                 fill("#403a3a")
                 rect(x * side, y * side, side, side);
                 text('🐈‍⬛', x * side, y * side + toBot)
+            } else if (matrix[y][x] == 7) {
+                fill("#f566Ef")
+                rect(x * side, y * side, side, side);
+                text('💀', x * side, y * side + toBot)
             }
             else {
                 fill("gray")
@@ -137,28 +143,31 @@ function draw() {
 
     }
 
-    for (let i in grassArr) {
-        grassArr[i].mul()
-    }
+    // for (let i in grassArr) {
+    //     grassArr[i].mul()
+    // }
 
-    for (let i in grassEaterArr) {
-        grassEaterArr[i].eat()
+    // for (let i in grassEaterArr) {
+    //     grassEaterArr[i].eat()
 
-    }
+    // }
 
 
 
-    for (let i in predatorArr) {
-        predatorArr[i].eat()
-    }
+    // for (let i in predatorArr) {
+    //     predatorArr[i].eat()
+    // }
 
-    for (let i = 0; i < amenagrassEaterArr.length; i++) {
-        amenagrassEaterArr[i].eat()
+    // for (let i = 0; i < amenagrassEaterArr.length; i++) {
+    //     amenagrassEaterArr[i].eat()
 
-    }
+    // }
 
-    for (let i = 0; i < amenakerArr.length; i++) {
-        amenakerArr[i].eat()
-    }
+    // for (let i = 0; i < amenakerArr.length; i++) {
+    //     amenakerArr[i].eat()
+    // }
+
+    // }
 
 }
+socket.on("send matrix", nkarel)

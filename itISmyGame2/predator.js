@@ -1,4 +1,4 @@
-let LivingCreature = requrie("./LivingCreature ")
+let LivingCreature = require("./LivingCreature")
 module.exports = class Predator extends LivingCreature {
     constructor(x, y) {
         super(x, y)
@@ -59,7 +59,7 @@ module.exports = class Predator extends LivingCreature {
             matrix[newY][newX] = 3;
             predatorArr.push(pred);
 
-            this.energy = 12;
+            this.energy = 6;
         }
     }
 

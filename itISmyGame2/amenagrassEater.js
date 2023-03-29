@@ -1,4 +1,4 @@
-let LivingCreature = requrie("./LivingCreature ")
+let LivingCreature = require("./LivingCreature")
 module.exports = class AmenagrassEater extends LivingCreature {
     constructor(x, y) {
         super(x, y)
@@ -92,7 +92,7 @@ module.exports = class AmenagrassEater extends LivingCreature {
     }
     move() {
         let found = this.chooseCell(0);
-        let exact = random(found)
+        let exact = found[Math.floor(Math.random()* found.length)]
 
         if (exact) {
             let x = exact[0];
@@ -126,4 +126,4 @@ module.exports = class AmenagrassEater extends LivingCreature {
     }
 }
 
-///fdfdf
+

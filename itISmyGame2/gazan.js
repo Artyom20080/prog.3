@@ -1,8 +1,8 @@
 let LivingCreature = require("./LivingCreature")
-module.exports = class Amenaker extends LivingCreature {
+module.exports = class Gazan extends LivingCreature {
     constructor(x, y) {
         super(x, y)
-        this.energy = 15
+        this.energy = 10
         this.directions = [];
     }
     getNewCoordinates() {
@@ -54,7 +54,7 @@ module.exports = class Amenaker extends LivingCreature {
             this.energy--
             var newX = newCell[0]
             var newY = newCell[1]
-            matrix[newY][newX] = 6
+            matrix[newY][newX] = 7
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
@@ -71,7 +71,7 @@ module.exports = class Amenaker extends LivingCreature {
 
     }
     eat() {
-        let emptyCell = this.chooseCell(1, 2, 3);
+        let emptyCell = this.chooseCell(3,4);
         let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
@@ -79,16 +79,6 @@ module.exports = class Amenaker extends LivingCreature {
             let x = newCell[0];
             let y = newCell[1];
 
-            for (let i = 0; i < grassArr.length; i++) {
-                if (grassArr[i].x == x && grassArr[i].y == y) {
-                    grassArr.splice(i, 1)
-                }
-            }
-            for (let i = 0; i < grassEaterArr.length; i++) {
-                if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
-                    grassEaterArr.splice(i, 1)
-                }
-            }
             for (let i = 0; i < predatorArr.length; i++) {
                 if (predatorArr[i].x == x && predatorArr[i].y == y) {
                     predatorArr.splice(i, 1)
@@ -99,18 +89,13 @@ module.exports = class Amenaker extends LivingCreature {
                     amenagrassEaterArr.splice(i, 1)
                 }
             }
-            for (let i = 0; i < gazanArr.length; i++) {
-                if (gazanArr[i].x == x && gazanArr[i].y == y) {
-                    gazanArr.splice(i, 1)
-                }
-            }
-            matrix[y][x] = 6
+            matrix[y][x] = 7
             matrix[this.y][this.x] = 0
 
             this.x = x;
             this.y = y
 
-            if (this.energy > 50) {
+            if (this.energy > 35) {
                 this.mul()
             }
         } else {
@@ -125,20 +110,20 @@ module.exports = class Amenaker extends LivingCreature {
         if (newCell && this.energy > 8) {
             var newX = newCell[0];
             var newY = newCell[1];
-            matrix[newY][newX] = 6;
+            matrix[newY][newX] = 7;
 
-            var amKer = new Amenaker(newX, newY);
+            var gaz = new Gazan(newX, newY);
 
-            amenakerArr.push(amKer);
-            this.energy = 10
+            gazanArr.push(gaz);
+            this.energy = 5
         }
     }
 
     die() {
         matrix[this.y][this.x] = 0;
-        for (var i in amenakerArr) {
-            if (this.x == amenakerArr[i].x && this.y == amenakerArr[i].y) {
-                amenakerArr.splice(i, 1);
+        for (var i in gazanArr) {
+            if (this.x == gazanArr[i].x && this.y == gazanArr[i].y) {
+                gazanArr.splice(i, 1);
                 break;
             }
         }
