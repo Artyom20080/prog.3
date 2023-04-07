@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameLife</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  
+    <script src="script.js"></script> 
+</head>
+<body>
+    
+      <h1>Ծրագրավորում 3րդ մակարդակ</h1>  
+      <div class="abouts">
+        <div class="grass">
+          <span class="spanIcon">
+          </span>
+              <h2>Grass</h2>
+ 
+                <button class="addButton"onclick="addGrass()">
+                  
+                  <span>Add Grass</span>
+                </button>
+          </div>
+            <div class="grassEater">
+              <span class="spanIcon">
+              </span>
+              <h2>Herbivores</h2>
+                <button class="addButton"onclick="addGrassEater()">
+                <span>Add Herbivores</span>
+              </button>
+            </div>
+          
+            <div class="predator">
+              <span class="spanIcon">
+                
+              </span>
+              <h2>Predator</h2>
+            <button class="addButton"onclick="addPredator()"> <span>Add Predator</span></button>
+
+              </div>
+          
+              <div class="water">
+                <span class="spanIcon">
+                </span>
+                
+            <h2>Water</h2>
+            
+            <button class="addButton"onclick="addWater()"> <span>Add Water</span></button>
+
+          </div>
+
+          <div class="bomb">
+            <span class="spanIcon">
+            </span>
+            <h2>Mine</h2>
+                
+            <button class="addButton"onclick="addBomb()"> <span>Add Mine</span></button>
+
+          </div>
+          <div class="flowers">
+            <span class="spanIcon">
+            </span>
+            
+        <h2>Flowers</h2>
+        
+        <button class="addButton" onclick="addFlowers()"><span>Add Flowers</span></button>
+
+      </div>
+  
+      </div>
+
+       <div class="counters">
+        <div class="col-sm-3">
+         <div class="counter-count">
+           <span class="count" id="grass"> </span>
+           <h3 class="title">Grass</h3>
+         </div>
+       </div>
+       <div class="col-sm-3">
+         <div class="counter-count">
+           <span class="count" id="grassEater"> </span>
+           <h3 class="title">Herbivores</h3>
+         </div>
+       </div>
+       <div class="col-sm-3">
+         <div class="counter-count">
+           <span class="count" id="predator"> </span>
+           <h3 class="title">Predator</h3>
+         </div>
+       </div>
+       <div class="col-sm-3">
+        <div class="counter-count">
+          <span class="count" id="water"> </span>
+          <h3 class="title">Water</h3>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="counter-count">
+          <span class="count" id="bomb"> </span>
+          <h3 class="title">Mine</h3>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="counter-count">
+          <span class="count" id="flowers"> </span>
+          <h3 class="title">Flowers</h3>
+        </div>
+      </div>
+     
+     </div>
+
+
+     <div class="content1">
+       <button class="weatherButton" onclick="Weathers(1)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Winter
+      </button>
+      <button class="weatherButton" onclick="Weathers(2)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Summer
+      </button>
+      <button class="weatherButton" onclick="Weathers(3)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Autumn
+      </button>
+      <button class="weatherButton" onclick="Weathers(4)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Spring
+      </button>
+      <button class="Restart" onclick="restart()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>Restart
+      </button>
+     </div>
+</body>
+</html>
